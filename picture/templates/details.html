@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{picture.name}}
+{% endblock %}
+
+{% block content %}
+    <div class="mx-auto mb-4 max-w-2xl py-4 px-6 rounded-xl bg-gray-200" style="margin-top: 5rem;">
+        <h1 class="py-4"><b class="text-3xl">Name: </b><span class="text-3xl text-yellow-500">{{picture.name}}</span></h1>
+        <h3 class="py-4"><b>Uploader: </b>{{picture.uploader}}</h3>
+        <span class="mb-2 block text-left text-xs text-dark-600"><b>Time: </b>Posted on {{picture.date_upload|timesince}} ago</span>
+
+        <ul>
+            <li><b>Image: </b>
+                <img 
+                    src="{{picture.image.url}}" 
+                    alt="{{picture.name}}"
+                    class="max-w-1xl"
+                />
+            </li>
+        </ul>
+        
+        {% if request.user.is_staff %}
+            <div class="my-4 flex justify-between">
+                <div class="left">
+                    <a 
+                        href="{% url 'delete' picture.pk %}"
+                        class="px-4 py-2 rounded-xl bg-red-800 text-white" 
+                        onclick="return confirm('Do you want to continue?')">
+                        Delete
+                    </a>
+                </div>
+
+                <div class="right">
+                    <a 
+                        href="{% url 'update' picture.pk %}" 
+                        class="mr-2 px-4 py-2 rounded-xl bg-blue-800 text-white">
+                        Update
+                    </a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

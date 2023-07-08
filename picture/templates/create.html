@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load tailwind_filters %}
+
+{% block title %}
+    Add Picture
+{% endblock %}
+
+{% block content %}
+    <h1 class="text-3xl text-yellow-500 text-center" style="padding-bottom: 1rem; margin-top: 5rem;">Add Picture</h1>
+
+    <div class="mx-auto max-w-2xl space-mb-4 text-yellow-500" id="card">
+        <form method="POST" enctype="multipart/form-data" class="text-yellow-500">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <div class="my-4 text-right">
+                <button class="px-4 py-2 rounded-xl bg-blue-800 text-white">Add</button>
+            </div>
+        </form>
+    </div>
+    <style>
+        #card{
+            background-color: whitesmoke;
+            border-radius: 40px 0 40px 0;
+            padding: 1rem;
+        }
+    </style>
+    
+{% endblock %}

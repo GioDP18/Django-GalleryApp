@@ -1,0 +1,70 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %} | Gallery App&trade;</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body">
+    <div class="flex flex-col h-screen">
+
+        <!-- Top | Navigation -->
+        <div class="">
+            <nav class="px-6 py-4 text-white flex justify-between nav fixed" id="top-nav">
+                <a href="{% url 'all-pictures' %}" class="hover:text-sky-700">Gallery App&trade;</a>
+
+                
+                {% if request.user.is_staff %}
+                <div class="right">
+                    <a href="{% url 'admin:index' %}">Admin Site</a>
+                    |
+                    <a href="{% url 'members' %}">Group Members</a>
+                    |
+                    <a href="{% url 'create' %}" class="hover:text-sky-700">Add Picture</a>
+                </div>
+                {% endif %}
+            </nav>
+        </div>
+        
+        <!-- Mid | Main Content -->
+        <div class="flex-grow" id="main-content">
+            <main class="mx-auto px-4 py-4">
+                {% block content %}{% endblock %}
+            </main>
+        </div>
+
+        <!-- Bootom | Footer -->
+        <div class="">
+            <footer class="px-6 py-4 text-yellow-400 text-center nav" id="footer">
+            <p class="text-xs">
+                Copyright &copy;
+                {% now 'D, M, Y' %} | IT 373 - Web Systems and Technology 2
+            </p>
+        </footer>
+        </div>
+        <style>
+            #top-nav{
+                width: 100%;
+            }
+
+            .nav{
+                background-image: linear-gradient(to right, rgba(9, 9, 24, 0.527) , rgb(9, 12, 22));
+            }
+
+            #main-content{
+                background-image: url("{% static 'pictures/images/bg.jpg' %}");
+                background-attachment: fixed;
+                background-size: cover;
+            }
+
+            #footer{
+                width: 100%;
+            }
+        </style>
+    </div>
+</body>
+</html>

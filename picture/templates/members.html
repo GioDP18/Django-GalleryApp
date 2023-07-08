@@ -1,0 +1,48 @@
+{% extends 'base.html' %}{% load static %}
+{% block title %}
+    Group Members
+{% endblock %}
+{% block content %}
+    <div class="cont container flex justify-evenly" style="margin-top: 8rem;">
+        <div class="card member1">
+            <h1 class="text-center">Developer 1</h1>
+            <img src="{% static 'pictures/images/glore.jpg'  %}">
+            <h3 class="fst"><b class="text-yellow-500">Name: </b><span class="name">Rachilla P. Glore</span></h3>
+            <h3><b class="text-yellow-500">Course, Year & Sec: </b><span class="name">BSIT-3B</span></h3>
+            <h3><b class="text-yellow-500">Campus: </b><span class="name">Carigara Campus</span></h3>
+        </div>
+        
+        <div class="card member2">
+            <h1 class="text-center">Developer 2</h1>
+            <img class="m-auto" src="{% static 'pictures/images/kit.jpg'  %}">
+            <h3 class="fst"><b class="text-yellow-500">Name: </b><span class="name">Kit A. Macasinag</span></h3>
+            <h3><b class="text-yellow-500">Course, Year & Sec: </b><span class="name">BSIT-3B</span></h3>
+            <h3><b class="text-yellow-500">Campus: </b><span class="name">Carigara Campus</span></h3>
+        </div>
+
+        <div class="card member3">
+            <h1 class="text-center">Developer 3</h1>
+            <img class="m-auto" src="{% static 'pictures/images/candaza.jpg'  %}">
+            <h3 class="fst"><b class="text-yellow-500">Name: </b><span class="name">Jan Reymond Candaza</span></h3>
+            <h3><b class="text-yellow-500">Course, Year & Sec: </b><span class="name">BSIT-3B</span></h3>
+            <h3><b class="text-yellow-500">Campus: </b><span class="name">Carigara Campus</span></h3>
+        </div>
+    </div>
+    <style>
+        .card{
+            padding: 2rem;
+        }
+
+        .card h1{
+            color: yellow;
+        }
+
+        .fst{
+            margin-top: 1rem;
+        }
+
+        .name{
+            color: whitesmoke;
+        }
+    </style>
+{% endblock %}
